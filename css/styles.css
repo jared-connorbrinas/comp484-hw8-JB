@@ -1,0 +1,98 @@
+/* Color Palette
+#141210 - Espresso Black
+#29211C - Dark Roast
+#594535 - Walnut Brown
+#C6A984 - Latte Beige
+#F3E9DB - Warm Cream
+*/
+
+/* Global styles and box-model fix */
+html { box-sizing: border-box; scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: inherit; }
+body {
+    margin: 0;
+    background: #141210;
+    color: #F3E9DB;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+}
+.content-wrap {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 50px;
+    overflow: hidden;
+}
+h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 800; line-height: 1.15; letter-spacing: -2px; margin: 0 0 15px; }
+h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.5px; margin-top: 0; margin-bottom: 35px; }
+h3 { font-size: 19px; font-weight: 700; color: #F3E9DB; margin: 0 0 6px; }
+p { margin-top: 0; }
+a { color: #C6A984; text-decoration: none; }
+a:hover { color: #F3E9DB; text-decoration: underline; }
+
+/* Reusable two-column layout from HW7 */
+.column-narrow {
+    width: 30%;
+    float: left;
+    padding-right: 3%;
+    min-height: 175px;
+}
+.column-wide {
+    width: 70%;
+    float: left;
+    min-height: 225px;
+}
+
+/* Header and intro */
+header { background: #141210; }
+.profile-img {
+    /* Width, float, and spacing come from column-narrow. */
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center 45%;
+    display: block;
+    /* A box shadow gives the original photo a dark-roast border without changing column width. */
+    filter: drop-shadow(0 0 2px #594535);
+}
+header h1, header h2 { margin: 0; }
+.intro h2 {
+    color: #C6A984;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.intro p { max-width: 650px; margin: 18px 0 0; color: #B8ACA1; }
+
+/* Work experience */
+.work { background: #29211C; }
+.work h2 { color: #C6A984; }
+.work p { color: #CBBEB1; }
+.job::after { content: ""; display: table; clear: both; }
+.job + .job { margin-top: 35px; }
+.job ul { margin-top: 0; }
+li { padding-left: 8px; margin-bottom: 10px; }
+li::marker { color: #C6A984; }
+
+/* Education */
+.education { background: #594535; }
+.education p { color: #E5D6C4; }
+
+/* Footer */
+footer { background: #141210; text-align: center; border-top: 1px solid #594535; }
+footer h2 { color: #C6A984; font-size: 28px; }
+.contact-info a { padding: 10px; display: inline-block; font-weight: 600; }
+footer p { margin: 25px 0 0; color: #8C8075; font-size: 13px; }
+
+/* Responsive layout: keep the floats for desktop, stack on small screens */
+@media (max-width: 700px) {
+    .content-wrap { padding: 35px 22px; }
+    .column-narrow, .column-wide { width: 100%; float: none; padding-right: 0; min-height: 0; }
+    .profile-img { width: 220px; height: 220px; max-width: 100%; margin: 0 auto 25px; }
+    header { text-align: center; }
+    h1 { letter-spacing: -1px; }
+    .job + .job { margin-top: 35px; }
+    .job .column-narrow { margin-bottom: 15px; }
+}

@@ -44,30 +44,72 @@ a:hover { color: #F3E9DB; text-decoration: underline; }
     min-height: 225px;
 }
 
-/* Header and intro */
+/* Polished resume introduction */
 header { background: #141210; }
-.profile-img {
-    /* Width, float, and spacing come from column-narrow. */
-    border-radius: 50%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    object-position: center 45%;
+header .content-wrap {
+    display: grid;
+    grid-template-columns: 215px minmax(0, 1fr);
+    align-items: center;
+    gap: 44px;
+    padding-top: 72px;
+    padding-bottom: 72px;
+    overflow: visible;
+}
+header .column-narrow, header .column-wide {
+    float: none;
+    min-height: 0;
+    padding-right: 0;
+    width: auto;
+}
+header .profile-img {
+    width: 225px;
+    height: 225px;
+    max-width: 100%;
     display: block;
-    /* A box shadow gives the original photo a dark-roast border without changing column width. */
-    filter: drop-shadow(0 0 2px #594535);
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 40%;
+    border: 1px solid rgba(198, 169, 132, .28);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, .3);
+    filter: none;
 }
-header h1, header h2 { margin: 0; }
-.intro h2 {
+header .intro { min-width: 0; }
+header h1 {
+    font-size: clamp(32px, 3.8vw, 49px);
+    font-weight: 800;
+    line-height: 1.13;
+    letter-spacing: -1.6px;
+    margin: 0 0 13px;
+    max-width: 650px;
+    overflow-wrap: normal;
+}
+header .intro h2 {
     color: #C6A984;
-    font-size: 19px;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    margin: 0 0 19px;
 }
-.intro p { max-width: 650px; margin: 18px 0 0; color: #B8ACA1; }
+header .intro p {
+    color: #B8ACA1;
+    font-size: 15px;
+    line-height: 1.85;
+    max-width: 590px;
+    margin: 0;
+}
 
 /* Work experience */
-.work { background: #29211C; }
+.work {
+    /* HW8: local image, topped with an RGBA transparency gradient */
+    background-image:
+        linear-gradient(115deg, rgba(20, 18, 16, 0.96) 0%, rgba(41, 33, 28, 0.90) 53%, rgba(41, 33, 28, 0.78) 100%),
+        url("../images/coffee-background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #29211C;
+}
 .work h2 { color: #C6A984; }
 .work p { color: #CBBEB1; }
 .job::after { content: ""; display: table; clear: both; }
@@ -86,13 +128,111 @@ footer h2 { color: #C6A984; font-size: 28px; }
 .contact-info a { padding: 10px; display: inline-block; font-weight: 600; }
 footer p { margin: 25px 0 0; color: #8C8075; font-size: 13px; }
 
-/* Responsive layout: keep the floats for desktop, stack on small screens */
+/* Responsive layout */
 @media (max-width: 700px) {
     .content-wrap { padding: 35px 22px; }
     .column-narrow, .column-wide { width: 100%; float: none; padding-right: 0; min-height: 0; }
-    .profile-img { width: 220px; height: 220px; max-width: 100%; margin: 0 auto 25px; }
-    header { text-align: center; }
-    h1 { letter-spacing: -1px; }
+    header .content-wrap {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        gap: 25px;
+        padding: 44px 22px 50px;
+    }
+    header .profile-img { width: 185px; height: 185px; }
+    header h1 { font-size: clamp(29px, 7vw, 42px); letter-spacing: -1px; }
+    header .intro h2 { font-size: 12px; }
+    header .intro p { font-size: 14px; line-height: 1.8; }
     .job + .job { margin-top: 35px; }
     .job .column-narrow { margin-bottom: 15px; }
+}
+
+/* HW8: sticky anchor navigation (no ul or li used for menu) */
+.resume-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(20, 18, 16, .97);
+    border-bottom: 1px solid #594535;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.nav-inner {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 11px 20px;
+    display: flex;
+    gap: 10px 25px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.resume-nav a {
+    display: inline-block;
+    color: #F3E9DB;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 7px 0;
+    transition: color .18s ease;
+}
+.resume-nav a:hover,
+.resume-nav a:focus-visible { color: #C6A984; }
+.resume-nav .download-link { color: #C6A984; }
+.resume-nav .download-link:hover { color: #F3E9DB; }
+.resume-nav .download-link i { margin-right: 6px; }
+/* prevent the sticky menu from covering the anchor destination */
+#about, #work, #education, #contact { scroll-margin-top: 105px; }
+.contact-info a i { margin-right: 7px; color: #C6A984; }
+@media (max-width: 700px) {
+    .nav-inner { gap: 2px 14px; padding: 9px 14px; }
+    .resume-nav a { font-size: 12px; padding: 6px 0; }
+    #about, #work, #education, #contact { scroll-margin-top: 120px; }
+}
+
+/* HW8: Contact section */
+footer .contact-intro {
+    margin: -16px auto 26px;
+    color: #B8ACA1;
+    font-size: 15px;
+    max-width: 520px;
+}
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+    text-align: left;
+}
+.contact-info a.contact-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid #594535;
+    border-radius: 12px;
+    background: #211B17;
+    color: #F3E9DB;
+    text-decoration: none;
+    transition: border-color .2s, transform .2s, background .2s;
+}
+.contact-info a.contact-card:hover,
+.contact-info a.contact-card:focus-visible {
+    background: #29211C;
+    border-color: #C6A984;
+    transform: translateY(-3px);
+}
+.contact-info .contact-card > i {
+    color: #C6A984;
+    font-size: 20px;
+    margin: 2px 0 0;
+    flex-shrink: 0;
+}
+.contact-details { display: flex; flex-direction: column; min-width: 0; gap: 6px; }
+.contact-details strong { font: 700 14px 'Montserrat', sans-serif; }
+.contact-details span { font-size: 12px; color: #CBBEB1; overflow-wrap: anywhere; font-weight: 400; }
+footer .copyright { margin-top: 32px; }
+@media (max-width: 850px) {
+    .contact-info { grid-template-columns: 1fr; }
 }

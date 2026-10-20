@@ -7,11 +7,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- HW8: sticky navigation; links instead of a list -->
+    <nav class="resume-nav" aria-label="Resume navigation">
+        <div class="nav-inner">
+            <a href="#about">About</a>
+            <a href="#work">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+            <a class="download-link" href="resume/Jared_Connor_Mora_Brinas_Resume.pdf" download="Jared_Connor_Mora_Brinas_Resume.pdf"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Download PDF</a>
+        </div>
+    </nav>
     <!-- Introduction -->
-    <header>
+    <header id="about">
         <div class="content-wrap">
             <img src="images/profile.JPG" alt="Portrait of Jared Connor Mora Brinas" class="profile-img column-narrow">
             <div class="column-wide intro">
@@ -29,7 +40,7 @@
 
     <main>
         <!-- Work Experience -->
-        <section class="work">
+        <section class="work" id="work">
             <div class="content-wrap">
                 <h2>Work Experience</h2>
                 <div class="job">
@@ -65,11 +76,28 @@
                         </ul>
                     </div>
                 </div>
+
+                <div class="job">
+                    <div class="column-narrow">
+                        <h3>Shift Supervisor</h3>
+                        <p>The Coffee Bean &amp; Tea Leaf</p>
+                        <p>2022-2023</p>
+                    </div>
+                    <div class="column-wide">
+                        <p>Key contributions:</p>
+                        <ul>
+                            <li>Supported daily store operations and helped maintain efficient service during busy shifts.</li>
+                            <li>Guided team members in delivering attentive customer service and preparing orders accurately.</li>
+                            <li>Assisted with opening and closing responsibilities, including maintaining a clean, organized workspace.</li>
+                            <li>Monitored stock levels and helped replenish coffee, tea, and other store supplies.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Education -->
-        <section class="education">
+        <section class="education" id="education">
             <div class="content-wrap">
                 <h2>Education</h2>
                 <h3>California State University, Northridge</h3>
@@ -79,14 +107,25 @@
         </section>
     </main>
 
-    <footer>
+    <footer id="contact">
         <div class="content-wrap">
-            <h2>Let's Keep in Touch!</h2>
+            <h2>Get in Touch</h2>
+            <p class="contact-intro">Whether it's about school, work, or a new opportunity, feel free to reach out.</p>
             <div class="contact-info">
-                <a href="mailto:jaredc.brinas@gmail.com">Email</a>
-                <a href="https://www.linkedin.com/in/jared-connor-brinas/?isSelfProfile=true" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a class="contact-card" href="mailto:jared-connor.brinas.618@my.csun.edu">
+                    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                    <span class="contact-details"><strong>Student Email</strong><span>jared-connor.brinas.618@my.csun.edu</span></span>
+                </a>
+                <a class="contact-card" href="mailto:jaredc.brinas@gmail.com">
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                    <span class="contact-details"><strong>Business Email</strong><span>jaredc.brinas@gmail.com</span></span>
+                </a>
+                <a class="contact-card" href="https://www.linkedin.com/in/jared-connor-brinas/?isSelfProfile=true" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                    <span class="contact-details"><strong>LinkedIn</strong><span>Connect with me</span></span>
+                </a>
             </div>
-            <p>Copyright 2026 by Jared Connor Mora Brinas</p>
+            <p class="copyright">Copyright 2026 by Jared Connor Mora Brinas</p>
         </div>
     </footer>
 </body>
